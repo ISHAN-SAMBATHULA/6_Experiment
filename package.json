@@ -1,0 +1,13 @@
+{
+  "name": "student-management-system",
+  "version": "1.0.0",
+  "description": "A mini Student Management System (registration, attendance, marks, reports) built with Express.js and JSON file storage.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
