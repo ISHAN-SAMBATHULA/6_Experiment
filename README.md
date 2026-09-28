@@ -8,14 +8,12 @@ a local JSON file (`data/students.json`) via the file system.
 
 - **Student Registration** — add, edit, and delete students (name, roll no, branch, year,
   email, phone), with validation and duplicate roll-number checks.
-- **Dashboard** — total students, branches, year groups, and average attendance, plus a
+- **Dashboard** — total students, branches, year groups, plus a
   branch/year breakdown and a "recently registered" list.
-- **Attendance Management** — mark Present/Absent per student for any date (bulk table or
-  per-student history), with attendance percentage calculated automatically.
 - **Marks & Grade Management** — enter subject-wise marks; total, percentage and grade
   (A+ down to F) are calculated automatically.
 - **Search, Filter & Reports** — search by name or roll number, filter by branch/year, and
-  open a full report for any student (personal details, attendance, marks and grade).
+  open a full report for any student (personal details, marks and grade).
 
 ## Tech stack
 
@@ -36,13 +34,12 @@ student-management-system/
 ├── data/
 │   └── students.json       # temporary JSON "database"
 ├── utils/
-│   └── dataStore.js        # all read/write + business logic (attendance %, grade calc)
+│   └── dataStore.js        # all read/write + business logic (grade calc)
 ├── routes/
 │   └── students.js         # REST API routes
 └── public/                 # frontend (served statically by Express)
     ├── index.html           # Dashboard
     ├── register.html        # Registration
-    ├── attendance.html      # Attendance management
     ├── marks.html            # Marks & grade management
     ├── reports.html          # Search, filter & reports
     ├── css/style.css
@@ -50,7 +47,6 @@ student-management-system/
         ├── common.js         # shared API + UI helpers
         ├── dashboard.js
         ├── register.js
-        ├── attendance.js
         ├── marks.js
         └── reports.js
 ```
@@ -84,7 +80,6 @@ PORT=4000 npm start
 | POST   | `/api/students`                    | Create a student                      |
 | PUT    | `/api/students/:id`                | Update a student                      |
 | DELETE | `/api/students/:id`                | Delete a student                      |
-| POST   | `/api/students/:id/attendance`     | Mark attendance `{date, status}`      |
 | POST   | `/api/students/:id/marks`          | Save marks `{subjects:[{subject,marks,maxMarks}]}` |
 
 ## Notes

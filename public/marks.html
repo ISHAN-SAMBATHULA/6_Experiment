@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marks &amp; Grades — Campus Register</title>
+  <meta name="description" content="Enter subject-wise marks and auto-calculate grades." />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div id="sidebar-slot"></div>
+
+  <div class="app">
+    <div class="main" style="margin-left:260px">
+      <header class="page-header">
+        <h1>Marks &amp; Grade Management</h1>
+        <p>Enter subject-wise marks — totals, percentages and grades are calculated automatically.</p>
+      </header>
+
+      <!-- student selector -->
+      <div class="card mb-2">
+        <div class="flex items-center" style="gap:1rem">
+          <div class="form-group" style="margin-bottom:0;flex:1">
+            <label for="marks-student">Select Student</label>
+            <select class="form-control" id="marks-student" onchange="loadMarksForStudent()">
+              <option value="">— Choose a student —</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- marks form -->
+      <div class="card" id="marks-area" style="display:none">
+        <div class="card__header">
+          <span class="card__title">Subjects</span>
+          <button class="btn btn-ghost btn-sm" onclick="addSubjectRow()">+ Add Subject</button>
+        </div>
+        <div id="subjects-list"></div>
+        <div class="flex justify-between mt-2">
+          <div id="grade-summary" style="font-weight:600;color:var(--clr-text-muted)"></div>
+          <button class="btn btn-primary" onclick="saveMarks()">Save Marks</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/common.js"></script>
+  <script src="js/marks.js"></script>
+</body>
+</html>
