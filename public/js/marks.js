@@ -1,7 +1,7 @@
 let selectedStudentId = null;
 let subjectRows = [];
 
-const defaultSubjects = ['Mathematics', 'Physics', 'Chemistry', 'English', 'Computer Science'];
+const defaultSubjects = ['Full Stack', 'ML', 'CPP', 'DWDM', 'MFML', 'OOSE'];
 
 document.addEventListener('DOMContentLoaded', loadStudentList);
 
