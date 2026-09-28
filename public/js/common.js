@@ -129,12 +129,6 @@ function renderSidebar() {
           Reports
         </a>
       </nav>
-      <div class="sidebar__footer">
-        <button class="sidebar__collapse-btn" onclick="toggleSidebar(false)" title="Close left bar">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
-          <span>Close Left Bar</span>
-        </button>
-      </div>
     </aside>
   `;
 }

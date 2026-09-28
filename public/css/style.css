@@ -128,31 +128,6 @@ body.sidebar-collapsed .sidebar {
   border-color: var(--clr-danger);
 }
 
-.sidebar__footer {
-  margin-top: auto;
-  padding-top: 1rem;
-  border-top: 1px solid var(--clr-border);
-}
-.sidebar__collapse-btn {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: .5rem;
-  padding: .6rem 1rem;
-  border: 1px solid var(--clr-border);
-  background: var(--clr-surface-2);
-  color: var(--clr-text-muted);
-  border-radius: var(--radius-md);
-  font-size: .82rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all var(--transition);
-}
-.sidebar__collapse-btn:hover {
-  background: var(--clr-border);
-  color: var(--clr-text);
-}
 
 .sidebar__nav { flex: 1; display: flex; flex-direction: column; gap: .25rem; }
 .sidebar__link {
