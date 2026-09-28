@@ -82,8 +82,8 @@ function renderSidebar() {
     <button class="burger" aria-label="Open menu">☰</button>
     <aside class="sidebar">
       <div class="sidebar__logo">
-        <div class="sidebar__logo-icon">CR</div>
-        <span class="sidebar__logo-text">Campus Register</span>
+        <div class="sidebar__logo-icon">SMS</div>
+        <span class="sidebar__logo-text">Student Management System</span>
       </div>
       <nav class="sidebar__nav">
         <a href="index.html" class="sidebar__link">

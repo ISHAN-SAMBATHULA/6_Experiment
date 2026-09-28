@@ -1,4 +1,4 @@
-# Campus Register — Student Management System
+# Student Management System
 
 A mini full-stack Student Management System built with **HTML, CSS, JavaScript** on the
 frontend and **Node.js + Express.js** on the backend. No database — all data is stored in
