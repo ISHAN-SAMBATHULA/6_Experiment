@@ -52,7 +52,23 @@ function closeModal(id) {
   document.getElementById(id).classList.remove('open');
 }
 
-/* ---------- sidebar active link ---------- */
+/* ---------- sidebar active link & collapse toggle ---------- */
+
+function toggleSidebar(forceOpen) {
+  const sidebar = document.querySelector('.sidebar');
+  const isCurrentlyCollapsed = document.body.classList.contains('sidebar-collapsed');
+  const shouldCollapse = forceOpen !== undefined ? !forceOpen : !isCurrentlyCollapsed;
+
+  if (shouldCollapse) {
+    document.body.classList.add('sidebar-collapsed');
+    if (sidebar) sidebar.classList.remove('open');
+    localStorage.setItem('sidebarCollapsed', 'true');
+  } else {
+    document.body.classList.remove('sidebar-collapsed');
+    if (sidebar) sidebar.classList.add('open');
+    localStorage.setItem('sidebarCollapsed', 'false');
+  }
+}
 
 function initSidebar() {
   const currentPage = location.pathname.split('/').pop() || 'index.html';
@@ -63,14 +79,20 @@ function initSidebar() {
     }
   });
 
-  // burger toggle for mobile
-  const burger = document.querySelector('.burger');
+  // Restore collapsed state
+  if (localStorage.getItem('sidebarCollapsed') === 'true') {
+    document.body.classList.add('sidebar-collapsed');
+  }
+
+  // Close sidebar on mobile when clicking a link
   const sidebar = document.querySelector('.sidebar');
-  if (burger && sidebar) {
-    burger.addEventListener('click', () => sidebar.classList.toggle('open'));
-    // close sidebar when clicking a link on mobile
+  if (sidebar) {
     sidebar.querySelectorAll('.sidebar__link').forEach(link => {
-      link.addEventListener('click', () => sidebar.classList.remove('open'));
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 800) {
+          toggleSidebar(false);
+        }
+      });
     });
   }
 }
@@ -79,11 +101,15 @@ function initSidebar() {
 
 function renderSidebar() {
   return `
-    <button class="burger" aria-label="Open menu">☰</button>
+    <button class="burger" onclick="toggleSidebar(true)" aria-label="Open left bar" title="Open left bar">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+    <div class="sidebar-backdrop" onclick="toggleSidebar(false)"></div>
     <aside class="sidebar">
       <div class="sidebar__logo">
         <div class="sidebar__logo-icon">SMS</div>
         <span class="sidebar__logo-text">Student Management System</span>
+        <button class="sidebar__close" onclick="toggleSidebar(false)" title="Close left bar">✕</button>
       </div>
       <nav class="sidebar__nav">
         <a href="index.html" class="sidebar__link">
@@ -103,6 +129,12 @@ function renderSidebar() {
           Reports
         </a>
       </nav>
+      <div class="sidebar__footer">
+        <button class="sidebar__collapse-btn" onclick="toggleSidebar(false)" title="Close left bar">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+          <span>Close Left Bar</span>
+        </button>
+      </div>
     </aside>
   `;
 }
